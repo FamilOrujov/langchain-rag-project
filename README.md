@@ -1,0 +1,595 @@
+# 🔬 RAG Project v1: Innovatech Solutions AI Assistant
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/python-3.13-blue.svg)
+![LangChain](https://img.shields.io/badge/LangChain-1.0-green.svg)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-1.3-orange.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+**An advanced Retrieval-Augmented Generation (RAG) system for intelligent enterprise knowledge management**
+
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-architecture) • [Documentation](#-documentation)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Technology Stack](#-technology-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Architecture](#-architecture)
+- [Knowledge Base](#-knowledge-base)
+- [Configuration](#-configuration)
+- [Development](#-development)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 🌟 Overview
+
+**RAG Project v1** is a production-ready Retrieval-Augmented Generation system built for **Innovatech Solutions**, demonstrating how AI can transform enterprise knowledge management. The system enables natural language queries over organizational data including company information, products, employees, and contracts.
+
+### What is RAG?
+
+Retrieval-Augmented Generation (RAG) combines the power of:
+- **Information Retrieval**: Finding relevant documents from a knowledge base
+- **Large Language Models**: Generating contextual, accurate responses
+- **Vector Databases**: Efficient semantic search using embeddings
+
+This approach prevents AI hallucinations by grounding responses in actual company documents.
+
+### Use Cases
+
+- 📚 **Internal Knowledge Base**: Employees can quickly find information about products, policies, and procedures
+- 🤝 **Customer Support**: AI-powered assistant that answers customer queries using official documentation
+- 📊 **Contract Analysis**: Rapidly search through contracts and agreements
+- 👥 **HR & Onboarding**: New employees can learn about the company and team members
+
+---
+
+## ✨ Features
+
+### Core Capabilities
+
+- 🧠 **Intelligent Question Answering**: Natural language queries with context-aware responses
+- 🔍 **Semantic Search**: Find relevant information even with different phrasing
+- 💬 **Conversational Interface**: Multi-turn conversations with conversation history
+- 📄 **Source Attribution**: Every answer shows which documents it came from
+- 🎨 **Modern Web UI**: Beautiful Gradio interface with real-time responses
+- 🔒 **Local LLM Support**: Works with both OpenAI API and local models via Ollama
+
+### Technical Features
+
+- ⚡ **Fast Vector Search**: ChromaDB for efficient similarity search
+- 📦 **Modular Architecture**: Clean separation of ingestion, retrieval, and generation
+- 🔄 **Easy Knowledge Updates**: Re-index documents with a single command
+- 📊 **Chunk Overlap**: Smart text splitting preserves context
+- 🎯 **Configurable Retrieval**: Adjust number of retrieved documents (K parameter)
+- 🌐 **Multi-Source Knowledge**: Supports company info, products, employees, and contracts
+
+---
+
+## 🛠️ Technology Stack
+
+### Core Technologies
+
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| **Language** | Python 3.13 | Main programming language |
+| **LLM Framework** | LangChain | Orchestration and RAG pipeline |
+| **Vector Database** | ChromaDB | Embeddings storage and retrieval |
+| **Embeddings** | HuggingFace (all-MiniLM-L6-v2) | Document and query embeddings |
+| **LLM** | OpenAI / Ollama (Gemma 4B) | Response generation |
+| **UI Framework** | Gradio | Web interface |
+| **Text Processing** | LangChain Text Splitters | Document chunking |
+
+### Key Dependencies
+
+```
+langchain >= 1.0.5
+langchain-openai >= 1.0.2
+langchain-chroma >= 1.0.0
+langchain-huggingface >= 1.0.1
+langchain-ollama >= 1.0.0
+chromadb >= 1.3.4
+gradio >= 5.49.1
+sentence-transformers >= 5.1.2
+python-dotenv >= 1.2.1
+```
+
+---
+
+## 📁 Project Structure
+
+```
+RAG-Project-v1/
+├── README.md                          # This file
+├── requirements.txt                   # Python dependencies
+├── pyproject.toml                     # Project configuration
+├── .gitignore                         # Git ignore rules
+├── .env                              # Environment variables (create this)
+│
+├── root-project/
+│   ├── app.py                        # Main Gradio web application
+│   │
+│   ├── implementation/
+│   │   ├── ingest.py                 # Document ingestion & embedding creation
+│   │   └── answer.py                 # RAG pipeline & question answering
+│   │
+│   ├── knowledge_base/               # Source documents
+│   │   ├── company/                  # Company information (4 docs)
+│   │   │   ├── about.md
+│   │   │   ├── careers.md
+│   │   │   ├── culture.md
+│   │   │   └── overview.md
+│   │   │
+│   │   ├── products/                 # Product documentation (5 docs)
+│   │   │   ├── SynapseEngine.md
+│   │   │   ├── ClarityLens.md
+│   │   │   ├── Continuum.md
+│   │   │   ├── EchoSphere.md
+│   │   │   └── Guardian.md
+│   │   │
+│   │   ├── employees/                # Employee profiles (10 docs)
+│   │   │   └── [10 employee profiles]
+│   │   │
+│   │   └── contracts/                # Business contracts (12 docs)
+│   │       └── [12 contract documents]
+│   │
+│   ├── vector_db/                    # ChromaDB vector store (generated)
+│   │   └── [Generated after ingestion]
+│   │
+│   ├── experiments/                  # Jupyter notebooks for testing
+│   │   ├── experiment.ipynb
+│   │   └── vector_db/                # Experimental vector stores
+│   │
+│   └── evaluation/                   # RAG evaluation scripts
+│
+└── main.py                           # Simple entry point
+```
+
+---
+
+## 🚀 Installation
+
+### Prerequisites
+
+- **Python 3.13** or higher
+- **Git** (for cloning the repository)
+- **OpenAI API Key** OR **Ollama** installed locally (for local LLMs)
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/FamilOrujov/RAG-Project-v1.git
+cd RAG-Project-v1
+```
+
+### Step 2: Create Virtual Environment
+
+#### Using venv (Standard Python)
+```bash
+python -m venv .venv
+
+# On Windows
+.venv\Scripts\activate
+
+# On macOS/Linux
+source .venv/bin/activate
+```
+
+#### Using uv (Faster Alternative)
+```bash
+uv venv
+uv pip install -r requirements.txt
+```
+
+### Step 3: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Set Up Environment Variables
+
+Create a `.env` file in the project root:
+
+```bash
+# For OpenAI API
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Optional: Other API keys
+ANTHROPIC_API_KEY=your_anthropic_key
+GOOGLE_API_KEY=your_google_key
+```
+
+### Step 5: Download Ollama (Optional - For Local LLMs)
+
+If you want to use local models instead of OpenAI:
+
+1. Download and install [Ollama](https://ollama.ai/)
+2. Pull a model:
+```bash
+ollama pull gemma2:2b
+# or
+ollama pull llama3.1:8b
+```
+
+---
+
+## 🎯 Usage
+
+### Quick Start
+
+#### 1. Ingest Documents (First Time Setup)
+
+This step processes all documents in the `knowledge_base/` folder, creates embeddings, and stores them in ChromaDB.
+
+```bash
+cd root-project
+python implementation/ingest.py
+```
+
+**Expected Output:**
+```
+There are 156 vectors with 384 dimensions in the vector store
+Ingestion complete
+```
+
+#### 2. Launch the Web Interface
+
+```bash
+python app.py
+```
+
+The Gradio interface will open in your browser at `http://localhost:7860`
+
+### Using the Application
+
+1. **Ask Questions**: Type your question in the text box
+2. **View Responses**: The AI assistant will provide an answer
+3. **Check Sources**: The right panel shows which documents were used
+4. **Continue Conversation**: Ask follow-up questions for context-aware responses
+
+### Example Queries
+
+```
+❓ What products does Innovatech Solutions offer?
+❓ Tell me about the company's mission and vision
+❓ Who is Seraphina Jones and what does she do?
+❓ What is the NexusFlow platform?
+❓ Tell me about the contract with Momentum Machines
+❓ What are the key features of the Synapse Engine?
+```
+
+---
+
+## 🏗️ Architecture
+
+### RAG Pipeline Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         RAG PIPELINE                            │
+└─────────────────────────────────────────────────────────────────┘
+
+1. INGESTION PHASE (One-time / When knowledge base updates)
+   ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+   │  Load Docs   │ ───> │ Split Chunks │ ───> │   Embed &    │
+   │  from KB     │      │  (500 chars) │      │   Store in   │
+   └──────────────┘      └──────────────┘      │   ChromaDB   │
+                                                └──────────────┘
+
+2. QUERY PHASE (Real-time)
+   ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+   │ User Query   │ ───> │   Embed &    │ ───> │   Retrieve   │
+   │              │      │ Vector Search│      │  Top K Docs  │
+   └──────────────┘      └──────────────┘      └──────────────┘
+                                                       │
+                                                       v
+   ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+   │   Return     │ <─── │     LLM      │ <─── │   Format     │
+   │   Answer     │      │   Generate   │      │   Prompt     │
+   └──────────────┘      └──────────────┘      └──────────────┘
+```
+
+### Component Details
+
+#### 1. Document Ingestion (`ingest.py`)
+
+**Purpose**: Process raw documents and create searchable embeddings
+
+**Steps**:
+1. **Load Documents**: Scans `knowledge_base/` for all `.md` files
+2. **Add Metadata**: Tags documents with type (company, products, employees, contracts)
+3. **Text Splitting**: 
+   - Chunk size: 500 characters
+   - Overlap: 200 characters (preserves context)
+4. **Embedding Creation**: Uses `all-MiniLM-L6-v2` (384 dimensions)
+5. **Vector Storage**: Stores in ChromaDB at `root-project/vector_db/`
+
+**Key Functions**:
+- `fetch_documents()`: Loads all markdown files with metadata
+- `create_chunks()`: Splits documents into overlapping chunks
+- `create_embeddings()`: Creates and stores vector embeddings
+
+#### 2. Question Answering (`answer.py`)
+
+**Purpose**: Handle user queries and generate responses using RAG
+
+**Steps**:
+1. **Query Processing**: Combines current question with conversation history
+2. **Retrieval**: Fetches top K=10 most relevant document chunks
+3. **Context Formatting**: Assembles retrieved documents into context
+4. **Prompt Construction**: Injects context into system prompt
+5. **LLM Generation**: Generates response using chat history
+6. **Response Return**: Returns answer + source documents
+
+**Key Functions**:
+- `fetch_context()`: Retrieves relevant documents via semantic search
+- `combined_question()`: Merges conversation history for better retrieval
+- `answer_question()`: Main RAG pipeline orchestration
+
+#### 3. Web Interface (`app.py`)
+
+**Purpose**: User-friendly Gradio interface for interaction
+
+**Features**:
+- Two-column layout: Chat on left, sources on right
+- Real-time streaming responses
+- Copy button for answers
+- Formatted source attribution with highlighting
+- Conversation history management
+
+---
+
+## 📚 Knowledge Base
+
+### Structure
+
+The knowledge base contains **31 markdown documents** across 4 categories:
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| **Company** | 4 docs | Mission, culture, history, careers |
+| **Products** | 5 docs | SynapseEngine, ClarityLens, Continuum, EchoSphere, Guardian |
+| **Employees** | 10 docs | Employee profiles with roles and responsibilities |
+| **Contracts** | 12 docs | Business agreements, MSAs, partnerships |
+
+### Adding New Documents
+
+1. **Create Markdown File**: Add `.md` file to appropriate folder in `knowledge_base/`
+2. **Use Clear Structure**: Include headers, bullet points for better chunking
+3. **Re-run Ingestion**:
+   ```bash
+   cd root-project
+   python implementation/ingest.py
+   ```
+4. **Restart Application**: Reload to use updated knowledge base
+
+### Document Best Practices
+
+- ✅ Use descriptive headers (`#`, `##`, `###`)
+- ✅ Keep paragraphs concise (2-3 sentences)
+- ✅ Use bullet points for lists
+- ✅ Include relevant keywords
+- ❌ Avoid very long paragraphs (>1000 chars)
+- ❌ Don't embed images in markdown (not supported)
+
+---
+
+## ⚙️ Configuration
+
+### Key Parameters
+
+Edit these in `answer.py` and `ingest.py`:
+
+#### Retrieval Settings (`answer.py`)
+
+```python
+RETRIEVAL_K = 10  # Number of document chunks to retrieve
+                  # Higher = more context, slower responses
+                  # Lower = faster, potentially less comprehensive
+```
+
+#### Chunking Settings (`ingest.py`)
+
+```python
+chunk_size = 500       # Characters per chunk
+chunk_overlap = 200    # Overlap between chunks (preserves context)
+```
+
+#### Model Selection (`answer.py`)
+
+**Option 1: OpenAI API**
+```python
+llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
+```
+
+**Option 2: Local LLM (Ollama)**
+```python
+llm = ChatOpenAI(
+    temperature=0.7, 
+    model_name='gemma2:2b',  # or llama3.1:8b
+    base_url='http://localhost:11434/v1', 
+    api_key='ollama'
+)
+```
+
+#### Embedding Model (`ingest.py` and `answer.py`)
+
+```python
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+# Alternatives:
+# - all-mpnet-base-v2 (higher quality, slower)
+# - all-MiniLM-L12-v2 (balanced)
+```
+
+---
+
+## 🔧 Development
+
+### Project Structure for Developers
+
+- **`implementation/ingest.py`**: Modify document loading, chunking strategy, embedding model
+- **`implementation/answer.py`**: Customize RAG pipeline, prompts, retrieval strategy
+- **`app.py`**: Change UI, add features, modify chat interface
+- **`experiments/`**: Jupyter notebooks for testing and experimentation
+
+### Running Experiments
+
+The `experiments/` folder contains Jupyter notebooks for testing:
+
+```bash
+cd root-project/experiments
+jupyter notebook experiment.ipynb
+```
+
+### Testing Different Configurations
+
+1. **Test Chunk Sizes**: Modify `chunk_size` in `ingest.py` and re-ingest
+2. **Test Retrieval K**: Adjust `RETRIEVAL_K` in `answer.py` and restart app
+3. **Test Different LLMs**: Change model in `answer.py`
+4. **Test Different Embeddings**: Change embedding model and re-ingest
+
+### Debugging
+
+Enable verbose output by adding to `answer.py`:
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+#### 1. "No such file or directory: vector_db"
+
+**Problem**: Vector database not created yet
+
+**Solution**: Run ingestion first
+```bash
+cd root-project
+python implementation/ingest.py
+```
+
+#### 2. "OpenAI API key not found"
+
+**Problem**: Missing or incorrect `.env` file
+
+**Solution**: 
+- Create `.env` file in project root
+- Add `OPENAI_API_KEY=your_key_here`
+- Or switch to Ollama for local LLM
+
+#### 3. "Connection refused" (Ollama)
+
+**Problem**: Ollama not running
+
+**Solution**:
+- Start Ollama: `ollama serve`
+- Verify: `ollama list`
+
+#### 4. Slow responses
+
+**Problem**: Too many documents retrieved or large model
+
+**Solution**:
+- Reduce `RETRIEVAL_K` in `answer.py`
+- Use smaller/faster LLM model
+- Use faster embedding model
+
+#### 5. "Module not found" errors
+
+**Problem**: Dependencies not installed
+
+**Solution**:
+```bash
+pip install -r requirements.txt --upgrade
+```
+
+#### 6. Answers don't use context
+
+**Problem**: Poor retrieval or prompt issues
+
+**Solution**:
+- Check `RETRIEVAL_K` is > 0
+- Verify documents ingested correctly
+- Review system prompt in `answer.py`
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how:
+
+### Development Setup
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes
+4. Test thoroughly
+5. Commit: `git commit -m "Add feature"`
+6. Push: `git push origin feature-name`
+7. Open a Pull Request
+
+### Code Style
+
+- Follow PEP 8
+- Use type hints
+- Add docstrings to functions
+- Comment complex logic
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **LangChain**: For the excellent RAG framework
+- **ChromaDB**: For fast vector search
+- **Gradio**: For the beautiful UI
+- **HuggingFace**: For open-source embeddings
+- **OpenAI**: For powerful language models
+- **Ollama**: For local LLM support
+
+---
+
+## 📞 Contact & Support
+
+- **Author**: Famil Orujov
+- **GitHub**: [@FamilOrujov](https://github.com/FamilOrujov)
+- **Project**: [RAG-Project-v1](https://github.com/FamilOrujov/RAG-Project-v1)
+
+### Getting Help
+
+- 🐛 [Report a Bug](https://github.com/FamilOrujov/RAG-Project-v1/issues)
+- 💡 [Request a Feature](https://github.com/FamilOrujov/RAG-Project-v1/issues)
+- 📖 [Documentation](https://github.com/FamilOrujov/RAG-Project-v1/wiki)
+
+---
+
+<div align="center">
+
+**⭐ If you find this project helpful, please give it a star!**
+
+Made with ❤️ by Famil Orujov
+
+</div>
+
