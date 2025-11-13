@@ -83,7 +83,7 @@ This approach prevents AI hallucinations by grounding responses in actual compan
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | **Language** | Python 3.13 | Main programming language |
-| **LLM Framework** | LangChain | Orchestration and RAG pipeline |
+| **LLM Framework** | LangChain v1.0 | Orchestration and RAG pipeline |
 | **Vector Database** | ChromaDB | Embeddings storage and retrieval |
 | **Embeddings** | HuggingFace (all-MiniLM-L6-v2) | Document and query embeddings |
 | **LLM** | OpenAI / Ollama (Gemma3 4B) | Response generation |
