@@ -353,6 +353,8 @@ The Gradio interface will open in your browser at `http://localhost:7860`
 
 ### Structure
 
+Inside the knowledge_base folder, you'll see 4 folders: company, contracts, employees, and products. All the .md files inside are **synthetic data**, which I created using Frontier LLMs (ChatGPT 5 and Gemini 2.5 pro).
+
 The knowledge base contains **31 markdown documents** across 4 categories:
 
 | Category | Count | Description |
@@ -362,27 +364,7 @@ The knowledge base contains **31 markdown documents** across 4 categories:
 | **Employees** | 10 docs | Employee profiles with roles and responsibilities |
 | **Contracts** | 12 docs | Business agreements, MSAs, partnerships |
 
-### Adding New Documents
 
-1. **Create Markdown File**: Add `.md` file to appropriate folder in `knowledge_base/`
-2. **Use Clear Structure**: Include headers, bullet points for better chunking
-3. **Re-run Ingestion**:
-   ```bash
-   cd root-project
-   python implementation/ingest.py
-   ```
-4. **Restart Application**: Reload to use updated knowledge base
-
-### Document Best Practices
-
-- ✅ Use descriptive headers (`#`, `##`, `###`)
-- ✅ Keep paragraphs concise (2-3 sentences)
-- ✅ Use bullet points for lists
-- ✅ Include relevant keywords
-- ❌ Avoid very long paragraphs (>1000 chars)
-- ❌ Don't embed images in markdown (not supported)
-
----
 
 ## ⚙️ Configuration
 
