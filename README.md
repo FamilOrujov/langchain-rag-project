@@ -286,7 +286,7 @@ The Gradio interface will open in your browser at `http://localhost:7860`
    │  Load Docs   │ ───> │ Split Chunks │ ───> │   Embed &    │
    │  from KB     │      │  (500 chars) │      │   Store in   │
    └──────────────┘      └──────────────┘      │   ChromaDB   │
-                                                └──────────────┘
+                                               └──────────────┘
 
 2. QUERY PHASE (Real-time)
    ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
