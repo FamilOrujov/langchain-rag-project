@@ -28,7 +28,6 @@
 - [Configuration](#-configuration)
 - [Development](#-development)
 - [Troubleshooting](#-troubleshooting)
-- [Contributing](#-contributing)
 - [License](#-license)
 
 ---
@@ -531,63 +530,20 @@ pip install -r requirements.txt --upgrade
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Here's how:
-
-### Development Setup
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes
-4. Test thoroughly
-5. Commit: `git commit -m "Add feature"`
-6. Push: `git push origin feature-name`
-7. Open a Pull Request
-
-### Code Style
-
-- Follow PEP 8
-- Use type hints
-- Add docstrings to functions
-- Comment complex logic
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
-
-- **LangChain**: For the excellent RAG framework
-- **ChromaDB**: For fast vector search
-- **Gradio**: For the beautiful UI
-- **HuggingFace**: For open-source embeddings
-- **OpenAI**: For powerful language models
-- **Ollama**: For local LLM support
-
----
-
-## 📞 Contact & Support
+## 📞 Contacts
 
 - **Author**: Famil Orujov
 - **GitHub**: [@FamilOrujov](https://github.com/FamilOrujov)
 - **Project**: [RAG-Project-v1](https://github.com/FamilOrujov/RAG-Project-v1)
 
-### Getting Help
-
-- 🐛 [Report a Bug](https://github.com/FamilOrujov/RAG-Project-v1/issues)
-- 💡 [Request a Feature](https://github.com/FamilOrujov/RAG-Project-v1/issues)
-- 📖 [Documentation](https://github.com/FamilOrujov/RAG-Project-v1/wiki)
-
----
 
 <div align="center">
-
-**⭐ If you find this project helpful, please give it a star!**
 
 Made with ❤️ by Famil Orujov
 
