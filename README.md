@@ -145,7 +145,7 @@ Note: vector_db/ folders are auto-generated and not tracked in Git
 
 ---
 
-## 🚀 Installation.
+## 🚀 Installation
 
 ### Prerequisites
 
