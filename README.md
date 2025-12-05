@@ -419,26 +419,6 @@ Enable verbose output by adding to `answer.py`:
 ```python
 import logging
 logging.basicConfig(level=logging.DEBUG)
-```
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📞 Contacts
-
-- **Author**: Famil Orujov
-- **LinkedIn**: [Famil Orujov](https://www.linkedin.com/in/famil-orujov/)
-- **Mail**: familorujov@gmail.com
 
 
-<div align="center">
-
-Made with ❤️ by Famil Orujov
-
-</div>
 
