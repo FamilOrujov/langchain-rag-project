@@ -188,7 +188,7 @@ If you want to use local models instead of OpenAI:
 1. Download and install [Ollama](https://ollama.ai/)
 2. Pull a model:
 ```bash
-ollama pull gemma2:2b
+ollama pull gemma3:3b
 # or
 ollama pull llama3.1:8b
 ```
