@@ -1,4 +1,4 @@
-# 🔬 RAG Project v1: Innovatech Solutions AI Assistant
+#  RAG Project v1: Innovatech Solutions AI Assistant
 
 <div align="center">
 
@@ -15,7 +15,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#-overview)
 - [Features](#-features)
@@ -32,12 +32,12 @@
 
 ---
 
-## 🌟 Overview
+## Overview
 
 **RAG Project v1** is a production-ready Retrieval-Augmented Generation system built for **Innovatech Solutions**, demonstrating how AI can transform enterprise knowledge management. The system enables natural language queries over organizational data including company information, products, employees, and contracts.
 
 
-## ✨ Features
+## Features
 
 
 
