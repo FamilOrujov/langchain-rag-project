@@ -321,7 +321,7 @@ The Gradio interface will open in your browser at `http://localhost:7860`
 
 ---
 
-## 📚 Knowledge Base
+## Knowledge Base
 
 ### Structure
 
@@ -338,7 +338,7 @@ The knowledge base contains **31 markdown documents** across 4 categories:
 
 
 
-## ⚙️ Configuration
+## Configuration
 
 ### Key Parameters
 
@@ -387,7 +387,7 @@ embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 ---
 
-## 🔧 Development
+## Development
 
 ### Project Structure for Developers
 
