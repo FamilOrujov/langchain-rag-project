@@ -78,7 +78,7 @@ RAG-Project-v1/
     │   ├── ingest.py                  # Document ingestion & embedding creation
     │   └── answer.py                  # RAG pipeline & question answering
     │
-    ├── knowledge_base/                # 📚 Source documents (31 .md files)
+    ├── knowledge_base/                # Source documents (31 .md files)
     │   ├── company/                   # Company information (4 docs)
     │   │   ├── about.md
     │   │   ├── careers.md
