@@ -72,7 +72,7 @@ RAG-Project-v1/
 ├── .env                               # Environment variables (create this)
 │
 └── root-project/                      # Main application folder
-    ├── app.py                         # 🚀 Main Gradio web application (START HERE)
+    ├── app.py                         # Main Gradio web application (START HERE)
     │
     ├── implementation/                # Core RAG implementation
     │   ├── ingest.py                  # Document ingestion & embedding creation
