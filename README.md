@@ -133,19 +133,60 @@ Note: vector_db/ folders are auto-generated and not tracked in Git
 
 ### Prerequisites
 
+- **Python 3.13+** (check with `python --version`)
 - **Git** (for cloning the repository)
 - **OpenAI API Key** OR **Ollama** installed locally (for local LLMs)
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/FamilOrujov/RAG-Project-v1.git
-cd RAG-Project-v1
+git clone https://github.com/FamilOrujov/langchain-rag-project.git
+cd langchain-rag-project
 ```
 
-### Step 2: Create Virtual Environment
+### Step 2: Set Up Environment & Install Dependencies
 
-#### Using venv (Standard Python)
+Choose **one** of the following methods:
+
+---
+
+#### Option A: Using uv (Recommended ⚡)
+
+[uv](https://docs.astral.sh/uv/) is an extremely fast Python package manager written in Rust. It's 10-100x faster than pip and handles virtual environments automatically.
+
+**1. Install uv** (if you don't have it):
+
+```bash
+# On macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# On Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# Or via pip (any platform)
+pip install uv
+```
+
+**2. Create environment and install dependencies:**
+
+```bash
+uv venv          # Creates .venv automatically
+uv sync          # Installs all dependencies from pyproject.toml & uv.lock
+```
+
+That's it! uv reads `pyproject.toml` and `uv.lock` to install exact dependency versions.
+
+> **💡 Tip:** With uv, you don't need to manually activate the virtual environment. Just prefix your commands with `uv run`:
+> ```bash
+> uv run python src/app.py
+> ```
+
+---
+
+#### Option B: Using pip (Traditional)
+
+**1. Create and activate virtual environment:**
+
 ```bash
 python -m venv .venv
 
@@ -156,19 +197,15 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-#### Using uv (Faster Alternative)
-```bash
-uv venv
-uv sync
-```
-
-### Step 3: Install Dependencies (if you're not using uv package manager)
+**2. Install dependencies:**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4: Set Up Environment Variables
+---
+
+### Step 3: Set Up Environment Variables
 
 Create a `.env` file in the project root:
 
@@ -181,14 +218,14 @@ ANTHROPIC_API_KEY=your_anthropic_key
 GOOGLE_API_KEY=your_google_key
 ```
 
-### Step 5: Download Ollama (Optional - For Local LLMs)
+### Step 4: Download Ollama (Optional - For Local LLMs)
 
 If you want to use local models instead of OpenAI:
 
 1. Download and install [Ollama](https://ollama.ai/)
 2. Pull a model:
 ```bash
-ollama pull gemma3:3b
+ollama pull gemma3:4b
 # or
 ollama pull llama3.1:8b
 ```
@@ -204,19 +241,28 @@ ollama pull llama3.1:8b
 This step processes all documents in the `knowledge_base/` folder, creates embeddings, and stores them in ChromaDB.
 
 ```bash
+# Using uv (recommended)
+uv run python src/implementation/ingest.py
+
+# Or using pip (after activating venv)
 cd src
 python implementation/ingest.py
 ```
 
 **Expected Output:**
 ```
-There are 156 vectors with 384 dimensions in the vector store
+There are 199 vectors with 384 dimensions in the vector store
 Ingestion complete
 ```
 
 #### 2. Launch the Web Interface
 
 ```bash
+# Using uv (recommended)
+uv run python src/app.py
+
+# Or using pip (after activating venv)
+cd src
 python app.py
 ```
 
