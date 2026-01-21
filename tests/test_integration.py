@@ -1,15 +1,14 @@
-import os
+import shutil
 import sys
 import tempfile
-import shutil
-import pytest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
-from implementation.ingest import fetch_documents, create_chunks
+
+from implementation.ingest import create_chunks, fetch_documents
 
 
 class TestIngestionPipeline:

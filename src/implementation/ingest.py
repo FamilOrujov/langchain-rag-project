@@ -1,13 +1,12 @@
-import os
 import glob
+import os
 from pathlib import Path
-from langchain_community.document_loaders import DirectoryLoader, TextLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
-
 
 from dotenv import load_dotenv
+from langchain_chroma import Chroma
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 MODEL = "gpt-4.1-nano"
 

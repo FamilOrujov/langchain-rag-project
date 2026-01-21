@@ -1,13 +1,11 @@
 from pathlib import Path
-from langchain_openai import ChatOpenAI
-from langchain_ollama import ChatOllama
-from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_core.messages import SystemMessage, HumanMessage, convert_to_messages
-from langchain_core.documents import Document
 
 from dotenv import load_dotenv
-
+from langchain_chroma import Chroma
+from langchain_core.documents import Document
+from langchain_core.messages import HumanMessage, SystemMessage, convert_to_messages
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import ChatOpenAI
 
 load_dotenv(override=True)
 

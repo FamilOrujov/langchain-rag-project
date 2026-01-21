@@ -1,14 +1,13 @@
 import sys
-import pytest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from implementation.answer import (
+    RETRIEVAL_K,
+    SYSTEM_PROMPT,
     combined_question,
     fetch_context,
-    SYSTEM_PROMPT,
-    RETRIEVAL_K,
 )
 
 
