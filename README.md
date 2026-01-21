@@ -164,7 +164,8 @@ I provide three installation methods depending on your preferences and setup. Ea
 | **pip** | ~5 min | Traditional Python workflow | Python 3.13+, Ollama |
 | **Docker** | ~12 min | Isolated environment, quick demo | Docker Desktop |
 
-**A note on Docker and CUDA:** The Docker image uses CPU only PyTorch to keep the image size manageable (~3GB instead of ~12GB) and build times reasonable (~12 minutes instead of ~50 minutes). If you need GPU acceleration for embeddings, I recommend the local installation with uv where you can install the full CUDA enabled PyTorch. For most use cases, CPU embeddings are fast enough since embedding generation is not the bottleneck, the LLM inference is.
+> [!NOTE]
+> The Docker image uses CPU only PyTorch to keep the image size manageable (~3GB instead of ~12GB) and build times reasonable (~12 minutes instead of ~50 minutes). If you need GPU acceleration for embeddings, I recommend the local installation with uv where you can install the full CUDA enabled PyTorch. For most use cases, CPU embeddings are fast enough since embedding generation is not the bottleneck, the LLM inference is.
 
 ### Installation with uv (Recommended)
 
@@ -248,7 +249,8 @@ python implementation/ingest.py
 python app.py
 ```
 
-**Remember:** You need to activate the virtual environment every time you open a new terminal session before running commands. With uv, this is handled automatically.
+> [!IMPORTANT]
+> You need to activate the virtual environment every time you open a new terminal session before running commands. With uv, this is handled automatically.
 
 ### Docker Installation
 
@@ -278,7 +280,8 @@ docker compose up
 
 Open http://localhost:7860 in your browser. The knowledge base is already ingested during the build process, so you can start asking questions immediately.
 
-**Note about Ollama:** The Docker container needs to communicate with Ollama running on your host. On Linux, this works automatically. On macOS and Windows, you may need to update `src/implementation/answer.py` to use `host.docker.internal` instead of `localhost` for the Ollama base URL, or configure your network settings appropriately.
+> [!WARNING]
+> The Docker container needs to communicate with Ollama running on your host. On Linux, this works automatically. On macOS and Windows, you may need to update `src/implementation/answer.py` to use `host.docker.internal` instead of `localhost` for the Ollama base URL, or configure your network settings appropriately.
 
 **Stopping the container:**
 
